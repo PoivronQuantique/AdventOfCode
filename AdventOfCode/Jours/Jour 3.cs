@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode.Jours
 {
@@ -14,7 +12,7 @@ namespace AdventOfCode.Jours
         private List<string> Lines { get; set; }
         #endregion
 
-
+        #region Constructeur
         public Jour_3(bool debug = false)
         {
             #region Input Data
@@ -32,7 +30,55 @@ namespace AdventOfCode.Jours
             if (debug)
                 DebugInit();
         }
+        #endregion
 
+        #region Initialisation
+        /// <summary>
+        /// Initialisation des données de travail pour une ligne.
+        /// Pour chaque symbole, on crée une entrée de type <n° de ligne, n° colonne> dans PlacementSymboles
+        /// Pour chaque nombre, on crée une entrée de type <nombre, n° ligne, n° colonne du premier chiffre, n° de colonne du dernier chiffre>
+        /// </summary>
+        /// <param name="Numero">Numéro de la ligne d'entrée</param>
+        /// <param name="ligne">Données de la ligne d'entrée</param>
+        private void InitialisationLigne(int Numero, string ligne)
+        {
+            var Caracteres = ligne.Where(c => c != '0' &&
+                            c != '1' &&
+                            c != '2' &&
+                            c != '3' &&
+                            c != '4' &&
+                            c != '5' &&
+                            c != '6' &&
+                            c != '7' &&
+                            c != '8' &&
+                            c != '9' &&
+                            c != '.').Distinct().ToList();
+            for (int i = 0; i < ligne.Length; i++)
+            {
+                if (Caracteres.Contains(ligne[i]))
+                    PlacementSymboles.Add(new Tuple<int, int, char>(Numero, i, ligne[i]));
+            }
+            string LigneVide = ligne.ToString();
+            foreach (var caractere in Caracteres)
+                LigneVide = LigneVide.Replace(caractere, '.');
+
+            List<long> listeNombres = LigneVide.Split('.').ToList().Select(l => (long.TryParse(l, out long nb) ? nb : (long?)null)).Where(n => n.HasValue).Select(n => n.Value).ToList();
+            foreach (long nb in listeNombres)
+            {
+                string tmp = nb.ToString();
+                int ndx = LigneVide.IndexOf(tmp);
+                long nbl = nb;
+                int ndxMoins = ndx;
+                LigneVide = (ndx == 0 ? "" : LigneVide.Substring(0, ndx))
+                                    + "".PadRight(tmp.Length, '.')
+                                    + (ndx + tmp.Length >= LigneVide.Length ? "" : LigneVide.Substring(ndx + tmp.Length));
+
+                Nombres.Add(new Tuple<long, int, int, int>(nbl, Numero, ndxMoins, ndx + tmp.Length - 1));
+            }
+        }
+        #endregion
+
+        #region Méthodes publiques
         public long Partie1()
         {
             int NbLignes = Lines.Count;
@@ -61,6 +107,9 @@ namespace AdventOfCode.Jours
 
             return TotalPart2;
         }
+        #endregion
+
+        #region Process
         /// <summary>
         /// Pour un nombre donné (à partir de ses coordonnées), indique si un symbole se trouve à proximité
         /// </summary>
@@ -107,51 +156,9 @@ namespace AdventOfCode.Jours
             }
             return nombresProches.Count;
         }
+        #endregion
 
-        /// <summary>
-        /// Initialisation des données de travail pour une ligne.
-        /// Pour chaque symbole, on crée une entrée de type <n° de ligne, n° colonne> dans PlacementSymboles
-        /// Pour chaque nombre, on crée une entrée de type <nombre, n° ligne, n° colonne du premier chiffre, n° de colonne du dernier chiffre>
-        /// </summary>
-        /// <param name="Numero">Numéro de la ligne d'entrée</param>
-        /// <param name="ligne">Données de la ligne d'entrée</param>
-        private void InitialisationLigne(int Numero, string ligne)
-        {
-            var Caracteres = ligne.Where(c => c != '0' &&
-                            c != '1' &&
-                            c != '2' &&
-                            c != '3' &&
-                            c != '4' &&
-                            c != '5' &&
-                            c != '6' &&
-                            c != '7' &&
-                            c != '8' &&
-                            c != '9' &&
-                            c != '.').Distinct().ToList();
-            for (int i = 0; i < ligne.Length; i++)
-            {
-                if (Caracteres.Contains(ligne[i]))
-                    PlacementSymboles.Add(new Tuple<int, int, char>(Numero, i, ligne[i]));
-            }
-            string LigneVide = ligne.ToString();
-            foreach (var caractere in Caracteres)
-                LigneVide = LigneVide.Replace(caractere, '.');
-
-            List<long> listeNombres = LigneVide.Split('.').ToList().Select(l => (long.TryParse(l, out long nb) ? nb : (long?)null)).Where(n => n.HasValue).Select(n => n.Value).ToList();
-            foreach (long nb in listeNombres)
-            {
-                string tmp = nb.ToString();
-                int ndx = LigneVide.IndexOf(tmp);
-                long nbl = nb;
-                int ndxMoins = ndx;
-                LigneVide = (ndx == 0 ? "" : LigneVide.Substring(0, ndx))
-                                    + "".PadRight(tmp.Length, '.')
-                                    + (ndx + tmp.Length >= LigneVide.Length ? "" : LigneVide.Substring(ndx + tmp.Length));
-
-                Nombres.Add(new Tuple<long, int, int, int>(nbl, Numero, ndxMoins, ndx + tmp.Length - 1));
-            }
-        }
-
+        #region Debug
         /// <summary>
         /// Fonction de debug de l'initialisation, par reconstruction de la matrice d'entrée et comparaison ligne à ligne
         /// </summary>
@@ -222,5 +229,6 @@ namespace AdventOfCode.Jours
 
             Console.WriteLine($"--- DEBUG ---");
         }
+        #endregion
     }
 }
