@@ -1,4 +1,4 @@
-﻿using AdventOfCode.Jours.J3;
+﻿using AdventOfCode.Jours.J4;
 using System;
 
 namespace AdventOfCode
@@ -7,7 +7,7 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            Jour_3 jour = new Jour_3();
+            Jour_4 jour = new Jour_4();
 
             Console.WriteLine("Part 1 : " + jour.Partie1().ToString().PadLeft(9));
             Console.WriteLine("Part 2 : " + jour.Partie2().ToString().PadLeft(9));
