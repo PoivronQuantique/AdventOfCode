@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Jours\J3\Jour 3.cs" />
+    <Compile Include="Jours\J6\Jour 6.cs" />
     <Compile Include="Jours\J4\Jour 4.cs" />
+    <Compile Include="Jours\J5\Jour 5.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
