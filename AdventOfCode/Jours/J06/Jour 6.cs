@@ -1,11 +1,8 @@
 ﻿using AdventOfCode.Template;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AdventOfCode.Jours.J6
+namespace AdventOfCode.Jours.J06
 {
     public class Jour_6 : Jour_abs
     {

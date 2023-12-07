@@ -1,13 +1,9 @@
 ﻿using AdventOfCode.Template;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static AdventOfCode.Jours.J7.Jour_7;
 
-namespace AdventOfCode.Jours.J7
+namespace AdventOfCode.Jours.J07
 {
     public class Jour_7 : Jour_abs
     {

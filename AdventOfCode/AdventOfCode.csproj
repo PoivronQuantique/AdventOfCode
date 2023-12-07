@@ -43,12 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Jours\J1\Jour 1.cs" />
-    <Compile Include="Jours\J3\Jour 3.cs" />
-    <Compile Include="Jours\J7\Jour 7.cs" />
-    <Compile Include="Jours\J6\Jour 6.cs" />
-    <Compile Include="Jours\J4\Jour 4.cs" />
-    <Compile Include="Jours\J5\Jour 5.cs" />
+    <Compile Include="Jours\J01\Jour 1.cs" />
+    <Compile Include="Jours\J02\Jour 2.cs" />
+    <Compile Include="Jours\J03\Jour 3.cs" />
+    <Compile Include="Jours\J07\Jour 7.cs" />
+    <Compile Include="Jours\J06\Jour 6.cs" />
+    <Compile Include="Jours\J04\Jour 4.cs" />
+    <Compile Include="Jours\J05\Jour 5.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Template\Jour.cs" />
@@ -58,7 +59,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Jours\J3\Énoncé.txt" />
+    <Content Include="Jours\J03\Énoncé.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

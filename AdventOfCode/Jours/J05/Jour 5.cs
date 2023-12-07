@@ -3,11 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static AdventOfCode.Jours.J5.Jour_5;
 
-namespace AdventOfCode.Jours.J5
+namespace AdventOfCode.Jours.J05
 {
     public class Jour_5 : Jour_abs
     {

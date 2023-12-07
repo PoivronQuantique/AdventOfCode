@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode.Jours.J4
+namespace AdventOfCode.Jours.J04
 {
     public class Jour_4 : Jour_abs
     {
