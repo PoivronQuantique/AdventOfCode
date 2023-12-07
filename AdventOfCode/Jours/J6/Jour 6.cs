@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdventOfCode.Template;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,44 +7,46 @@ using System.Threading.Tasks;
 
 namespace AdventOfCode.Jours.J6
 {
-    public class Jour_6
+    public class Jour_6 : Jour_abs
     {
         #region Propriétés
         List<Tuple<int, int>> records { get; set; } = new List<Tuple<int, int>>();
         Tuple<long, long> recordPt2 { get; set; }
         Dictionary<int, List<Tuple<int, int>>> jeuxGagnants { get; set; } = new Dictionary<int, List<Tuple<int, int>>>();
-
         #endregion
 
         #region Constructeur
         /// <summary> Initialisation des données
         /// </summary>
         /// <param name="debug"></param>
-        public Jour_6(bool debug = false)
+        public Jour_6(bool debug = false):base(debug)
+        {
+            Init();
+
+            if (Debug)
+                DebugInit();
+        }
+        #endregion
+
+        #region Initialisation
+        private void Init()
         {
             records.Add(new Tuple<int, int>(50, 242));
             records.Add(new Tuple<int, int>(74, 1017));
             records.Add(new Tuple<int, int>(86, 1691));
             records.Add(new Tuple<int, int>(85, 1252));
             recordPt2 = new Tuple<long, long>(50748685, 242101716911252);
-            if (debug)
-                DebugInit();
         }
-        #endregion
-
-        #region Initialisation
         #endregion
 
         #region Méthodes publiques
-        public long Partie1()
+        public override long Partie1()
         {
-
             return ProcessPart1();
         }
 
-        public long Partie2()
+        public override long Partie2()
         {
-
             return ProcessPart2();
         }
         #endregion
