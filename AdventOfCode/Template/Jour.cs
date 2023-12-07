@@ -57,24 +57,17 @@ namespace AdventOfCode.Jours.J
         #endregion
 
         #region Process
-        /// <summary>
-        /// Le process est identique au process1, avec pour seule différence la prise en compte des jokers, d'où le recalcul des valeurs des mains et le nouveau tri
-        /// </summary>
-        /// <returns></returns>
-        private long ProcessPart2()
+        private long ProcessPart1()
         {
             return 0;
         }
-        private long ProcessPart1()
+        private long ProcessPart2()
         {
             return 0;
         }
         #endregion
 
         #region Debug
-        /// <summary>
-        /// Fonction de debug de l'initialisation, par reconstruction de la matrice d'entrée et comparaison ligne à ligne
-        /// </summary>
         private void DebugInit()
         {
         }
