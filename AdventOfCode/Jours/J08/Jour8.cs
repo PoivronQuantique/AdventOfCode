@@ -18,7 +18,6 @@ namespace AdventOfCode.Jours.J08
 
         #region Propriétés
         private List<Instruction> Instructions { get; set; } = new List<Instruction>();
-        private Dictionary<string, Tuple<string, string>> Noeuds { get; set; } = new Dictionary<string, Tuple<string, string>>();
         private Network Reseau { get; set; } = null;
         #endregion
 
@@ -36,12 +35,14 @@ namespace AdventOfCode.Jours.J08
 
             Lines.RemoveAt(0);
             Lines.RemoveAt(0);
+
+            Dictionary<string, Tuple<string, string>> Noeuds = new Dictionary<string, Tuple<string, string>>();
             foreach (string ligne in Lines)
             {
-                InitialisationLigne(ligne);
+                InitialisationLigne(ligne, Noeuds);
             }
 
-            InitialisationReseau();
+            InitialisationReseau(Noeuds);
 
             if (this.Debug)
             {
@@ -55,7 +56,7 @@ namespace AdventOfCode.Jours.J08
         /// Initialisation des données de travail pour une ligne.
         /// </summary>
         /// <param name="ligne">Données de la ligne d'entrée</param>
-        private void InitialisationLigne(string ligne)
+        private void InitialisationLigne(string ligne, Dictionary<string, Tuple<string, string>> Noeuds)
         {
             var Split = ligne.Split('=').Select(s=>s.Trim()).ToList();
 
@@ -80,7 +81,7 @@ namespace AdventOfCode.Jours.J08
             }
         }
 
-        private void InitialisationReseau()
+        private void InitialisationReseau(Dictionary<string, Tuple<string, string>> Noeuds)
         {
             Reseau = new Network(Noeuds);
         }
@@ -166,17 +167,11 @@ namespace AdventOfCode.Jours.J08
         #region Debug
         private void DebugInit()
         {
-            bool Erreur = false;
-            foreach(var key in Noeuds.Keys)
+            foreach(var n in Reseau)
             {
-                if(!(key + " = " + Noeuds[key]).Equals(Reseau.First(n => n.Name.Equals(key)).ToString()))
-                {
-                    Console.WriteLine(key + " = " + Noeuds[key]);
-                    Console.WriteLine(Reseau.First(n => n.Name.Equals(key)).ToString());
-                    Erreur = true;
-                }
+                Console.WriteLine(n.ToString());
             }
-            Console.WriteLine("Réseau : " + (Erreur ? "Erreur" : "OK"));
+            Console.WriteLine("");
         }
         #endregion
 
@@ -187,10 +182,8 @@ namespace AdventOfCode.Jours.J08
             public long Multiplicateur { get; set; } = 0;
             public long NombreTotal { get { return Offset + (Multiplicateur * Raison); } }
             public long Raison { get; set; }
-            private Cycle()
-            {
+            private Cycle(){}
 
-            }
             /// <summary>
             /// On part du principe que le noeud fourni en paramètre est déjà aggrégé par jeu d'instructions
             /// </summary>
