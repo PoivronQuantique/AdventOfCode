@@ -7,7 +7,7 @@ namespace AdventOfCode.Jours
     {
         static void Main(string[] args)
         {
-            Jour_abs jour = new J08.Jour_8();
+            Jour_abs jour = new J09.Jour_9();
 
             Console.WriteLine("Part 1 : " + jour.Partie1().ToString().PadLeft(15));
             Console.WriteLine("Part 2 : " + jour.Partie2().ToString().PadLeft(15));
