@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AdventOfCode.Jours.J01
+namespace AdventOfCode.Jours
 {
     public class Jour_1 : Jour_abs
     {

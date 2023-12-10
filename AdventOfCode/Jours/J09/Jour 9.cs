@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace AdventOfCode.Jours.J09
+namespace AdventOfCode.Jours
 {
     public class Jour_9 : Jour_abs
     {

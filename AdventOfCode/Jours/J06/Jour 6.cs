@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AdventOfCode.Jours.J06
+namespace AdventOfCode.Jours
 {
     public class Jour_6 : Jour_abs
     {
