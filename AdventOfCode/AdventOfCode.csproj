@@ -87,6 +87,8 @@
     <Content Include="Jours\J10\Énoncé pt2.txt" />
     <Content Include="Jours\J11\Énoncé pt1.txt" />
     <Content Include="Jours\J11\Énoncé pt2.txt" />
+    <Content Include="Jours\J12\Énoncé pt1.txt" />
+    <Content Include="Jours\J12\Énoncé pt2.txt" />
     <Content Include="Jours\J13\Énoncé pt1.txt" />
     <Content Include="Jours\J13\Énoncé pt2.txt" />
   </ItemGroup>
