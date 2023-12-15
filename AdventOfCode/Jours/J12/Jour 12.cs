@@ -44,8 +44,11 @@ namespace AdventOfCode.Jours
         /// <param name="ligne">Données de la ligne d'entrée</param>
         private void InitialisationLigne(string ligne)
         {
-            SpringMap.Add(new SpringLine(ligne));
-            SpringMapPt2.Add(new SpringLine(ligne, true));
+            string s = ligne.ToString();
+            while (s.Contains("..")) s = s.Replace("..", ".");
+            
+            SpringMap.Add(new SpringLine(s));
+            SpringMapPt2.Add(new SpringLine(s, true));
         }
         #endregion
 
@@ -86,6 +89,7 @@ namespace AdventOfCode.Jours
             private List<int> Criteres { get; set; }
             private Regex Validation { get; set; }
             private Dictionary<string, long> Memo { get; set; } = new Dictionary<string, long>();
+            private Dictionary<int, Dictionary<int, long>> Memo2 { get; set; } = new Dictionary<int, Dictionary<int, long>>();
             private List<int> Unknowns { get; set; }
             public SpringLine(string Line, bool Pt2 = false)
             {
@@ -101,11 +105,68 @@ namespace AdventOfCode.Jours
                     Criteres.AddRange(Temp);
                     Criteres.AddRange(Temp);
                     Criteres.AddRange(Temp);
+                    Criteres.Select((c, i) => i).ToList().ForEach(i => Memo2.Add(i, new Dictionary<int, long>()));
                 }
 
                 string regex = "^\\.*#{" + string.Join("}\\.+#{", Criteres) + "}\\.*$";
                 Validation = new Regex(regex);
                 Unknowns = this.Line.Select((v, i) => new { index = i, valeur = v }).Where(c => c.valeur == '?').Select(c => c.index).ToList();
+            }
+            public long Test2 (string stringTemp, int indexCritere, int indexLine)
+            {
+                if (indexCritere >= Criteres.Count)
+                    return 1;
+
+                if (Memo2[indexCritere].TryGetValue(indexLine, out long nb))
+                {
+                    return nb;
+                }
+
+
+                long Nb = 0;
+                Regex valid = new Regex("^\\.*#{" + string.Join("}\\.+#{", Criteres.Take(indexCritere + 1)) + "}" + (indexCritere < Criteres.Count - 1 ? "\\." : ""));
+                int NbCharDroite = Criteres.Select((v, i) => i > indexCritere ? v + 1 : 0).Sum() - 1;
+
+                var UnknownsTemp = Unknowns.Where(u => u <= stringTemp.Length - NbCharDroite && u >= indexLine).ToList();
+
+
+                var match = valid.Match(stringTemp);
+                if (match.Success)
+                {
+                    Nb = Test2(stringTemp, match.Length, indexCritere + 1);
+
+                }
+                for(int step = 1; step <= Math.Min(Criteres[indexCritere], UnknownsTemp.Count); step++)
+                {
+                    var res = GenerateCombinations(UnknownsTemp.Count, step);
+
+                    foreach (var comb in res)
+                    {
+                        string possibilite = "";
+                        List<int> positions = comb.Select(c => UnknownsTemp[c]).ToList();
+                        for (int i = 0; i < this.Line.Length; i++)
+                        {
+                            if (positions.Contains(i))
+                            {
+                                possibilite += '#';
+                            }
+                            else
+                            {
+                                possibilite += stringTemp[i];
+                            }
+                        }
+
+                        match = valid.Match(possibilite);
+                        if (match.Success)
+                        {
+                            Nb += Test2(possibilite, match.Length, indexCritere + 1);
+
+                        }
+                    }
+                }
+
+                Memo2[indexCritere].Add(indexLine, Nb);
+                return 0;
             }
 
             public long Test(string stringTemp, int indexLine, int indexCritere)
@@ -167,7 +228,7 @@ namespace AdventOfCode.Jours
             public long CalculatePossibilitiesPt2()
             {
                 string strTemp = this.Line.Replace('?', '.');
-                return Test(strTemp, 0, 0);
+                return Test2(strTemp, 0, 0);
             }
             public long CalculatePossibilities()
             {
