@@ -11,6 +11,9 @@ namespace AdventOfCode.Jours
         #region Enumerables
         #endregion
 
+        #region Helpers
+        #endregion
+
         #region Propriétés
         #endregion
 
