@@ -67,12 +67,11 @@ namespace AdventOfCode.Jours
         #region Process
         private long ProcessPart1()
         {
-            return SpringMap.Sum(sm=>sm.CalculatePossibilities());
+            return SpringMap.CalculatePossibilities();
         }
         private long ProcessPart2()
         {
-            var Spr = SpringMapPt2.Select(sm => sm.CalculatePossibilities()).ToList();
-            return Spr.Sum();
+            return SpringMapPt2.CalculatePossibilities();
         }
         #endregion
 
@@ -83,6 +82,14 @@ namespace AdventOfCode.Jours
         #endregion
 
         #region Classes de travail
+        private class Springs : List<SpringLine>
+        {
+            public long CalculatePossibilities()
+            {
+                return this.Sum(sm => sm.CalculatePossibilities());
+            }
+        }
+
         private class SpringLine
         {
             private string Line { get; set; }
@@ -168,17 +175,11 @@ namespace AdventOfCode.Jours
                     }
                 }
 
-                // Pous on calcule le nombre de possibilités général
+                // Pous on calcule le nombre de possibilités global
                 long nb = Memo[0].Sum(p => p.CalculatePossibilities(this.Line, ""));
+
                 return nb;
             }
-
-
-
-        }
-        private class Springs : List<SpringLine>
-        {
-
         }
 
         private class Possibilite
@@ -195,6 +196,12 @@ namespace AdventOfCode.Jours
             {
                 Validation = new Regex("^\\.*#{" + string.Join("}\\.+#{", criteres) + "}\\.*$");
             }
+
+            public void RemovePossibilitesIncompatibles()
+            {
+                PossibilitesIndexSup.RemoveAll(pis => pis.IndexDebut <= this.IndexFin + 1);
+            }
+
             public long CalculatePossibilities(string Line, string s)
             {
                 // On construit une chaîne temporaire correspondant à la chaîne construite avec les possibilités précédentes puis la possibilité actuelle, en comblant les "trous" par la chaîne originelle
@@ -236,11 +243,6 @@ namespace AdventOfCode.Jours
                         NombreDePossibilites =  PossibilitesIndexSup.Sum(pis => pis.CalculatePossibilities(Line, sNew));
                     return NombreDePossibilites.Value;
                 }
-            }
-
-            public void RemovePossibilitesIncompatibles()
-            {
-                PossibilitesIndexSup.RemoveAll(pis => pis.IndexDebut <= this.IndexFin + 1);
             }
         }
         #endregion
