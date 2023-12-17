@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using AdventOfCodeCore.Jours;
-using AdventOfCodeCore;
+using AdventOfCode.Jours;
+using AdventOfCode;
 
 Jour_abs jour = new Jour_17();
 

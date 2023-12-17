@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
-namespace AdventOfCodeCore.Jours
+namespace AdventOfCode.Jours
 {
     public class Jour_14 : Jour_abs
     {

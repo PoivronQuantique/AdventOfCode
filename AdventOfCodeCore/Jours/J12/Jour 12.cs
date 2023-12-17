@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace AdventOfCodeCore.Jours
+namespace AdventOfCode.Jours
 {
     public class Jour_12 : Jour_abs
     {
