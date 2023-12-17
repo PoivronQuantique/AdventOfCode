@@ -1,0 +1,68 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Jours\J01\Énoncé pt1.txt" />
+    <None Remove="Jours\J01\Énoncé pt2.txt" />
+    <None Remove="Jours\J02\Énoncé pt1.txt" />
+    <None Remove="Jours\J02\Énoncé pt2.txt" />
+    <None Remove="Jours\J03\Énoncé pt1.txt" />
+    <None Remove="Jours\J03\Énoncé pt2.txt" />
+    <None Remove="Jours\J04\Énoncé pt1.txt" />
+    <None Remove="Jours\J04\Énoncé pt2.txt" />
+    <None Remove="Jours\J05\Énoncé pt1.txt" />
+    <None Remove="Jours\J05\Énoncé pt2.txt" />
+    <None Remove="Jours\J06\Énoncé pt1.txt" />
+    <None Remove="Jours\J06\Énoncé pt2.txt" />
+    <None Remove="Jours\J07\Énoncé pt1.txt" />
+    <None Remove="Jours\J07\Énoncé pt2.txt" />
+    <None Remove="Jours\J08\Énoncé pt1.txt" />
+    <None Remove="Jours\J08\Énoncé pt2.txt" />
+    <None Remove="Jours\J09\Énoncé pt1.txt" />
+    <None Remove="Jours\J09\Énoncé pt2.txt" />
+    <None Remove="Jours\J10\Énoncé pt1.txt" />
+    <None Remove="Jours\J10\Énoncé pt2.txt" />
+    <None Remove="Jours\J11\Énoncé pt1.txt" />
+    <None Remove="Jours\J11\Énoncé pt2.txt" />
+    <None Remove="Jours\J12\Énoncé pt1.txt" />
+    <None Remove="Jours\J12\Énoncé pt2.txt" />
+    <None Remove="Jours\J13\Énoncé pt1.txt" />
+    <None Remove="Jours\J13\Énoncé pt2.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Jours\J01\Énoncé pt1.txt" />
+    <Content Include="Jours\J01\Énoncé pt2.txt" />
+    <Content Include="Jours\J02\Énoncé pt1.txt" />
+    <Content Include="Jours\J02\Énoncé pt2.txt" />
+    <Content Include="Jours\J03\Énoncé pt1.txt" />
+    <Content Include="Jours\J03\Énoncé pt2.txt" />
+    <Content Include="Jours\J04\Énoncé pt1.txt" />
+    <Content Include="Jours\J04\Énoncé pt2.txt" />
+    <Content Include="Jours\J05\Énoncé pt1.txt" />
+    <Content Include="Jours\J05\Énoncé pt2.txt" />
+    <Content Include="Jours\J06\Énoncé pt1.txt" />
+    <Content Include="Jours\J06\Énoncé pt2.txt" />
+    <Content Include="Jours\J07\Énoncé pt1.txt" />
+    <Content Include="Jours\J07\Énoncé pt2.txt" />
+    <Content Include="Jours\J08\Énoncé pt1.txt" />
+    <Content Include="Jours\J08\Énoncé pt2.txt" />
+    <Content Include="Jours\J09\Énoncé pt1.txt" />
+    <Content Include="Jours\J09\Énoncé pt2.txt" />
+    <Content Include="Jours\J10\Énoncé pt1.txt" />
+    <Content Include="Jours\J10\Énoncé pt2.txt" />
+    <Content Include="Jours\J11\Énoncé pt1.txt" />
+    <Content Include="Jours\J11\Énoncé pt2.txt" />
+    <Content Include="Jours\J12\Énoncé pt1.txt" />
+    <Content Include="Jours\J12\Énoncé pt2.txt" />
+    <Content Include="Jours\J13\Énoncé pt1.txt" />
+    <Content Include="Jours\J13\Énoncé pt2.txt" />
+  </ItemGroup>
+
+</Project>
