@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace AdventOfCode.Jours
+﻿namespace AdventOfCode.Jours
 {
     public class Jour_3 : Jour_abs
     {

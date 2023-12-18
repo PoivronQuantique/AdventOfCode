@@ -1,12 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using static AdventOfCode.Jours.Jour_14;
-
-namespace AdventOfCode.Jours
+﻿namespace AdventOfCode.Jours
 {
     public class Jour_17 : Jour_abs
     {
