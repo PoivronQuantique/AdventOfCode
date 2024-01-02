@@ -49,6 +49,10 @@
     <None Remove="Jours\J19\Énoncé pt2.txt" />
     <None Remove="Jours\J20\Énoncé pt1.txt" />
     <None Remove="Jours\J20\Énoncé pt2.txt" />
+    <None Remove="Jours\J21\Énoncé pt1.txt" />
+    <None Remove="Jours\J21\Énoncé pt2.txt" />
+    <None Remove="Jours\J22\Énoncé pt1.txt" />
+    <None Remove="Jours\J22\Énoncé pt2.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -92,6 +96,10 @@
     <Content Include="Jours\J19\Énoncé pt2.txt" />
     <Content Include="Jours\J20\Énoncé pt1.txt" />
     <Content Include="Jours\J20\Énoncé pt2.txt" />
+    <Content Include="Jours\J21\Énoncé pt1.txt" />
+    <Content Include="Jours\J21\Énoncé pt2.txt" />
+    <Content Include="Jours\J22\Énoncé pt1.txt" />
+    <Content Include="Jours\J22\Énoncé pt2.txt" />
   </ItemGroup>
 
 </Project>
