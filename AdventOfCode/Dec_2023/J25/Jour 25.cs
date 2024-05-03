@@ -1,6 +1,6 @@
 ﻿namespace AdventOfCode.Dec_2023
 {
-    public class Jour_ : Jour_abs
+    public class Jour_25 : Jour_abs
     {
         #region Enumerables
         #endregion
@@ -12,7 +12,7 @@
         #endregion
 
         #region Constructeur
-        public Jour_(bool debug = false):base(debug)
+        public Jour_25(bool debug = false):base(debug)
         {
             #region Input Data
             string InputData = "";
